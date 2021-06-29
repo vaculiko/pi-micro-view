@@ -21,11 +21,11 @@ def set_saving_directory():
 
 
 def take_picture():
-    date_string = datetime.now().strftime("%Y-%m-%d-%H:%M:%S")
+    date_string = datetime.now().strftime("%Y%m%d-%H%M%S")
     print(f'Image {date_string} captured')
     camera.annotate_text = ''
     set_saving_directory()
-    camera.capture(f'image-{date_string}.jpg', use_video_port=True)
+    camera.capture(f'image-{date_string}.png', use_video_port=True)
     camera.annotate_text = f'Image {date_string} saved to {os.getcwd()}!'
     sleep(.1)
 
