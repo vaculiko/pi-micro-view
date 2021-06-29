@@ -7,7 +7,7 @@ Raspberry Pi microscope viewer - display, take images, live image processing and
 - [x] GPIO button input
 - [x] Button press saves picture
 - [x] Filename with date and time
-- [ ] Locate USB drive and save images there
+- [x] Locate USB drive and save images there
 - [ ] PySimpleGUI for folder selection, preview?
 - [ ] Bash script for dependency installation
 - [ ] Script to enable camera, VNC
