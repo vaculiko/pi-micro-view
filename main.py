@@ -59,9 +59,10 @@ def stop():
     quit()
 
 
-camera.start_preview()
-camera.annotate_text = f"Resolution {camera.resolution}"
-button1.when_pressed = take_picture
-button2.when_pressed = zoom_preview
-# button3.when_pressed = take_picture
-button4.when_pressed = stop
+if __name__ == "__main__":
+    camera.start_preview()
+    camera.annotate_text = f"Resolution {camera.resolution}"
+    button1.when_pressed = take_picture
+    button2.when_pressed = zoom_preview
+    # button3.when_pressed = take_picture
+    button4.when_pressed = stop
