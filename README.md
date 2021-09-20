@@ -12,3 +12,15 @@ Raspberry Pi microscope viewer - display, take images, live image processing and
 - [ ] PySimpleGUI for folder selection, preview?
 - [ ] Bash script for dependency installation
 - [ ] Script to enable camera, VNC
+- [ ] Welcome screen
+
+### Welcome screen
+
+Black background using `AWB_mode = 'off'`
+
+| Button | Short press        | Long press |
+|:------:|:------------------ |:---------- |
+| 1      | Take picture       |            |
+| 2      | Zoom 2x            |            |
+| 3      | Exposure lock      |            |
+| 4      | White balance lock |            |
