@@ -2,7 +2,7 @@ import os
 from time import sleep
 from signal import pause
 from gpiozero import Button
-from picamera import PiCamera
+from picamera import PiCamera, Color
 from datetime import datetime
 
 # https://roboticadiy.com/how-to-debounce-push-button-in-raspberry-pi-4/
@@ -11,22 +11,18 @@ button2 = Button("BOARD28")
 button3 = Button(25)
 button4 = Button(8)
 
-camera = PiCamera()
-camera.resolution = (1024, 768)
-camera.framerate = 30
+camera = PiCamera(resolution=(3280, 2464))
 
 
 def welcome_screen():
     camera.awb_mode = "off"
-    camera.annotate_text_size = 50
-    # camera.annotate_text = 5*"Some very long text\n"
+    camera.annotate_text_size = 100
+    camera.annotate_background = Color("black")
     camera.annotate_text = """Pi Microscope Viewer
-
 1 - Take picture
 2 - Zoom 2x
 3 - Exposure lock
 4 - White balance lock
-
 Press 1 to continue."""
     button1.wait_for_press()
     camera.annotate_text_size = 40
@@ -47,7 +43,7 @@ def take_picture():
     print(f"Image {date_string} captured")
     camera.annotate_text = ""
     set_saving_directory()
-    camera.capture(f"image-{date_string}.png")
+    camera.capture(f"image-{date_string}.png", use_video_port=False)
     camera.annotate_text = f"Image {date_string} saved to {os.getcwd()}!"
     sleep(0.2)
 
@@ -92,7 +88,8 @@ if __name__ == "__main__":
     camera.start_preview()
     welcome_screen()
     camera.annotate_text = f"Resolution {camera.resolution}"
-    button1.when_pressed = take_picture
-    button2.when_pressed = zoom_preview
-    button3.when_pressed = exposure_lock
-    button4.when_pressed = awb_lock
+    while True:
+        button1.when_pressed = take_picture
+        button2.when_pressed = zoom_preview
+        button3.when_pressed = exposure_lock
+        button4.when_pressed = awb_lock
