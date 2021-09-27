@@ -1,0 +1,4 @@
+[Desktop Entry]
+Type= Application
+Name= PiMicroView
+Exec= /usr/bin/python3  /home/pi/pi-micro-view/main.py
