@@ -106,7 +106,7 @@ if __name__ == "__main__":
         button3.when_pressed = exposure_lock
         button4.when_pressed = bw_toggle
 
-        button1.when_held = reboot
+        button1.when_held = None
         button2.when_held = None
         button3.when_held = None
-        button4.when_held = awb_lock
+        button4.when_held = reboot
