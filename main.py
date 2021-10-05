@@ -6,12 +6,13 @@ from picamera import PiCamera, Color
 from datetime import datetime
 
 # https://roboticadiy.com/how-to-debounce-push-button-in-raspberry-pi-4/
-button1 = Button(7)
-button2 = Button("BOARD28")
-button3 = Button(25)
-button4 = Button(8)
+button1 = Button(8)
+button2 = Button(25)
+button3 = Button("BOARD28")
+button4 = Button(7)
 
 camera = PiCamera(resolution=(3280, 2464))
+camera.color_effects = (128, 128)
 
 
 def welcome_screen():
@@ -78,10 +79,21 @@ def awb_lock():
     sleep(0.2)
 
 
+def bw_toggle():
+    if camera.color_effects == (128, 128):
+        camera.color_effects = None
+    else:
+        camera.color_effects = (128, 128)
+
+
 def stop():
     camera.stop_preview()
     camera.close()
     quit()
+
+
+def reboot():
+    os.system("sudo reboot")
 
 
 if __name__ == "__main__":
@@ -92,4 +104,9 @@ if __name__ == "__main__":
         button1.when_pressed = take_picture
         button2.when_pressed = zoom_preview
         button3.when_pressed = exposure_lock
-        button4.when_pressed = awb_lock
+        button4.when_pressed = bw_toggle
+
+        button1.when_held = reboot
+        button2.when_held = None
+        button3.when_held = None
+        button4.when_held = awb_lock
