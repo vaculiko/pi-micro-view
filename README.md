@@ -24,3 +24,7 @@ Black background using `AWB_mode = 'off'`
 | 2      | Zoom 2x            |            |
 | 3      | Exposure lock      |            |
 | 4      | White balance lock |            |
+
+### Connection
+1 GND - Pin 30 (GND)
+5 Button - Pin 25
