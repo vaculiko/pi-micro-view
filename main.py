@@ -46,7 +46,7 @@ def take_picture():
     set_saving_directory()
     camera.capture(f"image-{date_string}.png", use_video_port=False)
     camera.annotate_text = f"Image {date_string} saved to {os.getcwd()}!"
-    sleep(0.2)
+    # sleep(0.2)
 
 
 def zoom_preview():
@@ -109,4 +109,4 @@ if __name__ == "__main__":
         button1.when_held = None
         button2.when_held = None
         button3.when_held = None
-        button4.when_held = reboot
+        button4.when_held = stop
