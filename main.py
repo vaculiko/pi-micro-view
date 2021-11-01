@@ -100,13 +100,16 @@ if __name__ == "__main__":
     camera.start_preview()
     welcome_screen()
     camera.annotate_text = f"Resolution {camera.resolution}"
-    while True:
-        button1.when_pressed = take_picture
-        button2.when_pressed = zoom_preview
-        button3.when_pressed = exposure_lock
-        button4.when_pressed = bw_toggle
+    try:
+        while True:
+            button1.when_pressed = take_picture
+            button2.when_pressed = zoom_preview
+            button3.when_pressed = exposure_lock
+            button4.when_pressed = bw_toggle
 
-        button1.when_held = None
-        button2.when_held = None
-        button3.when_held = None
-        button4.when_held = stop
+            button1.when_held = None
+            button2.when_held = None
+            button3.when_held = None
+            button4.when_held = stop
+    except KeyboardInterrupt:
+        pass
