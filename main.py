@@ -23,7 +23,7 @@ def welcome_screen():
 1 - Take picture
 2 - Zoom 2x
 3 - Exposure lock
-4 - White balance lock
+4 - Take 10s video
 Press 1 to continue."""
     button1.wait_for_press()
     camera.annotate_text_size = 40
@@ -45,7 +45,7 @@ def take_picture():
     camera.annotate_text = ""
     set_saving_directory()
     camera.capture(f"image-{date_string}.png", use_video_port=False)
-    camera.annotate_text = f"Image {date_string} saved to {os.getcwd()}!"
+    camera.annotate_text = f"Image saved to {os.getcwd()}!"
     # sleep(0.2)
 
 
@@ -84,7 +84,20 @@ def bw_toggle():
         camera.color_effects = None
     else:
         camera.color_effects = (128, 128)
+        
+        
+def record_video(duration: int):
+    date_string = datetime.now().strftime("%Y%m%d-%H%M%S")
+    camera.annotate_text = ""
+    set_saving_directory()
+    camera.start_recording(f'video-{date_string}.mjpeg')
+    camera.wait_recording(duration)
+    camera.stop_recording()
+    camera.annotate_text = f"Video saved to {os.getcwd()}!"
 
+
+def record_10s():
+    record_video(10)
 
 def stop():
     camera.stop_preview()
@@ -105,7 +118,7 @@ if __name__ == "__main__":
             button1.when_pressed = take_picture
             button2.when_pressed = zoom_preview
             button3.when_pressed = exposure_lock
-            button4.when_pressed = bw_toggle
+            button4.when_pressed = record_10s
 
             button1.when_held = None
             button2.when_held = None

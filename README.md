@@ -23,8 +23,9 @@ Black background using `AWB_mode = 'off'`
 | 1      | Take picture       |            |
 | 2      | Zoom 2x            |            |
 | 3      | Exposure lock      |            |
-| 4      | White balance lock |            |
+| 4      | Record 10s video | Exit app   |
 
 ### Connection
+
 1 GND - Pin 30 (GND)
 5 Button - Pin 25
