@@ -2,6 +2,8 @@
 
 Raspberry Pi microscope viewer - display, take images, live image processing and more.
 
+**NOTE** - Works only on 32-bit Raspbian 
+
 ## TODO
 
 - [x] GPIO button input
